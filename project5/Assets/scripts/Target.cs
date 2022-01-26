@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    private int torque = 10;
+    private int minPush = 10;
+    private int maxPush = 16;
+    private int xPos = 5;
+    private int yPos = -6;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,18 +21,35 @@ public class Target : MonoBehaviour
         targetRB = GetComponent<Rigidbody>();
 
         //adds force to throw and ands torque to rotate
-        targetRB.AddForce(Vector3.up * RandomGen(10,20), ForceMode.Impulse);
-        targetRB.AddTorque(RandomGen(0,20), RandomGen(0,20), RandomGen(0,20), ForceMode.Impulse);
+        targetRB.AddForce(ForcePush(), ForceMode.Impulse);
+        targetRB.AddTorque(TorqueRan(),TorqueRan(),TorqueRan(), ForceMode.Impulse);
         
         //randomized starting position
-        this.transform.position = new Vector3(RandomGen(-5,5), -6);
+        this.transform.position = StartingPos();
 
     }
 
-    int RandomGen(int point1, int point2)
+    //throws target up
+    Vector3 ForcePush()
 	{
-        return Random.Range(point1, point2);
+
+        return Vector3.up * Random.Range(minPush,maxPush);
+
+    }
+
+    //start position of target
+    Vector3 StartingPos()
+	{
+        return new Vector3(Random.Range(-xPos,xPos),yPos);
 	}
+
+    //torques targert
+    int TorqueRan()
+    {
+        return Random.Range(-torque, torque);
+    }
+
+    
 
     // Update is called once per frame
     void Update()
