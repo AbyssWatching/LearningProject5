@@ -8,7 +8,7 @@ public class Target : MonoBehaviour
     private int minPush = 10;
     private int maxPush = 16;
     private int xPos = 5;
-    private int yPos = -6;
+    private int yPos = -2;
 
 
     // Start is called before the first frame update
@@ -55,7 +55,17 @@ public class Target : MonoBehaviour
     void Update()
     {
         
+
     }
 
+	private void OnMouseDown()
+	{
+        Destroy(gameObject);
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+        Destroy(gameObject);
+	}
 
 }
