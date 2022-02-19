@@ -116,6 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e188e92781767b14caa9df2245a0fe7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointWorth: -5
+  GameManagerScript: {fileID: 0}
 --- !u!65 &3449900463288803050
 BoxCollider:
   m_ObjectHideFlags: 0

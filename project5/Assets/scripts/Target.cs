@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    private int torque = 10;
-    private int minPush = 10;
-    private int maxPush = 16;
-    private int xPos = 5;
-    private int yPos = -2;
+    private readonly int torque = 10;
+    private readonly int minPush = 10;
+    private readonly int maxPush = 16;
+    private readonly int xPos = 5;
+    private readonly int yPos = -2;
+    public int pointWorth;
+    public GameManager GameManagerScript;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        GameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
+
         //creates rigibody for throwing and rotating items
         Rigidbody targetRB;
 
@@ -61,6 +65,8 @@ public class Target : MonoBehaviour
 	private void OnMouseDown()
 	{
         Destroy(gameObject);
+        GameManagerScript.ScoreToAdd(pointWorth);
+
 	}
 
 	private void OnCollisionEnter(Collision collision)
