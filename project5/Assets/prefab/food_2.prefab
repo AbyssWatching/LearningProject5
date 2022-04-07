@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointWorth: 5
   GameManagerScript: {fileID: 0}
+  explosionParticle: {fileID: 2088871590894813759, guid: 745208c9d6e104225bd99e1ab894e3bb, type: 3}
 --- !u!65 &4251739681486332853
 BoxCollider:
   m_ObjectHideFlags: 0

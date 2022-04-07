@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointWorth: 5
   GameManagerScript: {fileID: 0}
+  explosionParticle: {fileID: 625621707174889904, guid: ef43e5aef41c142fb85a7658a397dc75, type: 3}
 --- !u!54 &2038879456999435632
 Rigidbody:
   m_ObjectHideFlags: 0

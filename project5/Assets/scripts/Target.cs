@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    //where and how to throw presets
     private readonly int torque = 10;
     private readonly int minPush = 10;
     private readonly int maxPush = 16;
     private readonly int xPos = 5;
     private readonly int yPos = -2;
+
+    //how many points each item is worth
     public int pointWorth;
+
+    //grabing GM script to converse with it
     public GameManager GameManagerScript;
+
+    //explosion
+    public ParticleSystem explosionParticle;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //grabbing that script
         GameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
 
         //creates rigibody for throwing and rotating items
@@ -66,12 +75,24 @@ public class Target : MonoBehaviour
 	{
         Destroy(gameObject);
         GameManagerScript.ScoreToAdd(pointWorth);
+        Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
 
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	//private void OnCollisionEnter(Collision other)
+	//{
+	//	if (other.gameObject.tag == "sensor")
+	//	{
+ //           Destroy(gameObject);
+ //       }
+ //   }
+
+	private void OnTriggerEnter(Collider other)
 	{
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("sensor"))
+		{
+            Destroy(gameObject);
+		}
 	}
 
 }
